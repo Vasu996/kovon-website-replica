@@ -1,13 +1,43 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import { ArrowUpRightIcon, MenuIcon } from "@/components/ui/Icons";
+import { ArrowUpRightIcon, CloseIcon, MenuIcon } from "@/components/ui/Icons";
 import { navLinks } from "@/constants/content";
 
 const Header = (): JSX.Element => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent): void => {
+      if (!mobileMenuRef.current?.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent): void => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  const closeMenu = (): void => setIsMenuOpen(false);
+
   return (
     <header
-      className="border-b shadow-sm backdrop-blur-sm"
+      className="relative z-40 border-b shadow-sm backdrop-blur-sm"
       style={{
         backgroundColor: "var(--header-bg)",
         borderColor: "var(--line)",
@@ -52,36 +82,55 @@ const Header = (): JSX.Element => {
           </PrimaryButton>
         </div>
 
-        <div className="flex items-center gap-1 md:hidden">
+        <div ref={mobileMenuRef} className="flex items-center gap-1 md:hidden">
           <ThemeToggle />
-          <details className="relative">
-          <summary className="inline-flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full text-white transition hover:bg-white/10">
-            <MenuIcon className="h-5 w-5" />
-          </summary>
-          <aside
-            className="absolute right-0 top-[calc(100%+0.5rem)] z-20 w-[250px] rounded-xl border p-4 shadow-lg"
-            style={{
-              backgroundColor: "rgb(9,16,38)",
-              borderColor: "var(--line)",
-              color: "#ffffff"
-            }}
-          >
-            <nav className="mb-5 flex flex-col gap-2">
-              {navLinks.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="rounded-lg px-3 py-2 text-[0.95rem] font-medium text-white/82 transition duration-200 hover:bg-white/10 hover:text-white"
+          <div className="relative">
+            <button
+              type="button"
+              aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav-menu"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/10"
+            >
+              {isMenuOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+            </button>
+            {isMenuOpen ? (
+              <>
+                <button
+                  type="button"
+                  aria-label="Close menu overlay"
+                  onClick={closeMenu}
+                  className="fixed inset-0 z-20 bg-slate-950/30 backdrop-blur-[2px]"
+                />
+                <aside
+                  id="mobile-nav-menu"
+                  className="fixed left-4 right-4 top-[calc(var(--header-height-mobile)+0.55rem)] z-30 mx-auto max-w-sm rounded-2xl border p-4 shadow-[0_18px_50px_rgba(2,8,24,0.5)] backdrop-blur-md"
+                  style={{
+                    backgroundColor: "rgba(9,16,38,0.94)",
+                    borderColor: "var(--line)",
+                    color: "#ffffff"
+                  }}
                 >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-            <PrimaryButton fullWidth className="!rounded-full !px-6 !py-2.5 !font-bold">
-              Get Started
-            </PrimaryButton>
-          </aside>
-          </details>
+                  <nav className="mb-4 flex flex-col gap-1.5">
+                    {navLinks.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={closeMenu}
+                        className="rounded-lg border border-transparent px-3 py-2.5 text-[0.98rem] font-medium text-white/85 transition duration-200 hover:border-white/10 hover:bg-white/10 hover:text-white"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </nav>
+                  <PrimaryButton onClick={closeMenu} fullWidth className="!rounded-full !px-6 !py-2.5 !font-bold">
+                    Get Started
+                  </PrimaryButton>
+                </aside>
+              </>
+            ) : null}
+          </div>
         </div>
       </div>
     </header>
