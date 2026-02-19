@@ -1,67 +1,67 @@
 # KOVON Website Replica
+A modern, fully responsive replica of the KOVON website built using Next.js (App Router), TypeScript, Tailwind CSS, and Material UI (MUI).
 
-## How to Run the Project
-To run this project, make sure you have all the required libraries installed. You can run the project using the following command:
+🌐 Live Demo
 
-```bash
-npm start
-```
+##🔗 Live Demo:
+(Add your deployed link here — for example Vercel)
+https://kovon-website-replica.vercel.app/
+
+##🛠️ Tech Stack
+
+Next.js 14+
+
+React
+
+TypeScript
+
+Tailwind CSS
+
+Material UI (MUI)
+
+##📥 Clone the Repository
+git clone https://github.com/Vasu996/kovon-website-replica.git
+
+##Navigate into the project folder:
+cd kovon-website-replica
 
 ## How to Install Libraries
 To install the necessary libraries for this project, run the following command:
 
-```bash
 npm install
-```
+
+▶️ Run the Project (Development Mode)
+
+Start the development server:
+
+npm run dev
 
 ## Project Structure
 The project structure is organized as follows:
 
-```
 kovon-website-replica/
-├── .gitignore
-├── .next/                          # Next.js build output (auto-generated)
-│   ├── app-build-manifest.json
-│   ├── build-manifest.json
-│   ├── package.json
-│   ├── react-loadable-manifest.json
-│   ├── trace
-│   ├── cache/
-│   │   ├── swc/
-│   │   └── webpack/
-│   ├── server/
-│   │   └── app-paths-manifest.json
-│   ├── static/
-│   │   ├── chunks/
-│   │   └── css/
-│   └── types/
-├── app/                            # Next.js App Router
-│   ├── globals.css                 # Global styles & CSS variables
-│   ├── layout.tsx                  # Root layout with theme provider
-│   ├── page.tsx                    # Home page
-│   └── theme-provider.tsx          # Theme context & MUI provider
-├── components/                     # React components
-│   ├── features/
-│   │   ├── FeaturesSection.tsx
-│   │   └── FeatureCard.tsx
-│   ├── footer/
-│   │   └── Footer.tsx
+│
+├── app/                        # Next.js App Router
+│   ├── globals.css             # Global styles
+│   ├── layout.tsx              # Root layout
+│   ├── page.tsx                # Home page
+│   └── theme-provider.tsx      # MUI Theme provider
+│
+├── components/                 # Reusable UI components
 │   ├── header/
-│   │   └── Header.tsx
 │   ├── hero/
-│   │   └── HeroSection.tsx
-│   └── how-it-works/
-│       └── HowItWorks.tsx
-├── constants/
-│   └── content.ts                  # Static content & data
-├── types/
-│   └── index.ts                    # TypeScript type definitions
-├── next-env.d.ts                   # Next.js TypeScript declarations
-├── next.config.mjs                 # Next.js configuration
-├── package.json                    # Dependencies & scripts
-├── postcss.config.js               # PostCSS config for Tailwind
-├── tailwind.config.ts              # Tailwind CSS configuration
-├── tsconfig.json                   # TypeScript configuration
-└── README.md                       # Project documentation
+│   ├── features/
+│   ├── how-it-works/
+│   └── footer/
+│
+├── constants/                  # Static content
+├── types/                      # TypeScript type definitions
+│
+├── public/                     # Static assets
+├── package.json                # Scripts & dependencies
+├── next.config.mjs             # Next.js configuration
+├── tailwind.config.ts          # Tailwind CSS config
+├── tsconfig.json               # TypeScript configuration
+└── README.md                   # Documentation
 
-Feel free to explore the different components of the project!
+
