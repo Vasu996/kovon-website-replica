@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true
+  reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ["@mui/material", "@mui/icons-material"]
+  }
 };
 
 export default nextConfig;

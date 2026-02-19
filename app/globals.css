@@ -14,7 +14,7 @@
   --brand-dark: #0a48c7;
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-edge: rgba(255, 255, 255, 0.7);
-  --glass-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+  --glass-shadow: 0 12px 36px rgba(15, 23, 42, 0.14);
   --header-height-mobile: 4.25rem;
   --header-height: 4.75rem;
   --section-pad-mobile: 5rem;
@@ -34,7 +34,7 @@
   --brand-dark: #5a91f0;
   --glass-bg: rgba(17, 28, 58, 0.5);
   --glass-edge: rgba(126, 160, 234, 0.2);
-  --glass-shadow: 0 20px 60px rgba(2, 7, 20, 0.5);
+  --glass-shadow: 0 14px 36px rgba(2, 7, 20, 0.42);
 }
 
 * {
@@ -89,14 +89,14 @@ a {
   background: var(--glass-bg);
   border: 1px solid var(--glass-edge);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(16px) saturate(145%);
+  backdrop-filter: blur(8px) saturate(120%);
   transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
 }
 
 .glass-soft {
   background: color-mix(in oklab, var(--surface-2) 80%, transparent);
   border: 1px solid var(--line);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
 }
 
 .text-gradient {
@@ -109,7 +109,7 @@ a {
 .ring-glow {
   box-shadow:
     0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent),
-    0 16px 40px color-mix(in oklab, var(--brand) 20%, transparent);
+    0 12px 28px color-mix(in oklab, var(--brand) 16%, transparent);
 }
 
 .typo-eyebrow {
@@ -170,8 +170,8 @@ a {
 }
 
 @keyframes wordPop {
-  0% { opacity: 0; transform: translateY(8px); filter: blur(2px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .motion-word {
@@ -192,6 +192,14 @@ a {
   display: flex;
   width: max-content;
   animation: marqueeMove 22s linear infinite;
+  will-change: transform;
+}
+
+#services,
+#about,
+footer#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .marquee-item {

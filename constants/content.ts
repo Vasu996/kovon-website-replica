@@ -1,12 +1,10 @@
-import {
-  AccountTree,
-  Language,
-  QueryStats,
-  RocketLaunch,
-  LinkedIn,
-  Twitter,
-  Instagram
-} from "@mui/icons-material";
+import AccountTree from "@mui/icons-material/AccountTree";
+import Instagram from "@mui/icons-material/Instagram";
+import Language from "@mui/icons-material/Language";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import QueryStats from "@mui/icons-material/QueryStats";
+import RocketLaunch from "@mui/icons-material/RocketLaunch";
+import Twitter from "@mui/icons-material/Twitter";
 import type {
   FeatureItem,
   HeroStatItem,

@@ -22,13 +22,13 @@ const Header = (): JSX.Element => {
     <AppBar
       position="sticky"
       elevation={0}
-      className="border-b shadow-md backdrop-blur-md"
+      className="border-b shadow-sm backdrop-blur-sm"
       sx={{
         backgroundColor: mode === "dark" ? "rgba(9,16,38,0.78)" : "rgba(9,16,38,0.92)",
         borderColor: "var(--line)",
         color: "#ffffff",
-        backdropFilter: "blur(12px) saturate(130%)",
-        WebkitBackdropFilter: "blur(12px) saturate(130%)"
+        backdropFilter: "blur(8px) saturate(125%)",
+        WebkitBackdropFilter: "blur(8px) saturate(125%)"
       }}
     >
       <Container maxWidth="lg">
@@ -43,6 +43,7 @@ const Header = (): JSX.Element => {
               width={186}
               height={80}
               priority
+              sizes="(max-width: 640px) 134px, 150px"
               className="h-[2.1rem] w-auto sm:h-[2.35rem]"
             />
           </a>
@@ -106,8 +107,8 @@ const Header = (): JSX.Element => {
           sx: {
             width: 292,
             backgroundColor: mode === "dark" ? "rgba(9,16,38,0.75)" : "rgb(9,16,38)",
-            backdropFilter: mode === "dark" ? "blur(16px) saturate(130%)" : "none",
-            WebkitBackdropFilter: mode === "dark" ? "blur(16px) saturate(130%)" : "none",
+            backdropFilter: mode === "dark" ? "blur(10px) saturate(125%)" : "none",
+            WebkitBackdropFilter: mode === "dark" ? "blur(10px) saturate(125%)" : "none",
             borderLeft: "1px solid var(--line)",
             color: "#ffffff"
           }

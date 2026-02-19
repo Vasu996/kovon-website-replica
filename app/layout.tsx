@@ -6,12 +6,16 @@ import "./globals.css";
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
+  display: "swap",
+  preload: true,
   weight: ["400", "500", "600", "700", "800"]
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
+  display: "swap",
+  preload: true,
   weight: ["500", "600", "700"]
 });
 
