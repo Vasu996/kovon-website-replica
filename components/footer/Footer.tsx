@@ -55,7 +55,7 @@ const Footer = (): JSX.Element => {
                     aria-label={item.name}
                     className="glass-soft rounded-full p-2.5 text-[var(--ink-soft)] transition duration-200 hover:-translate-y-0.5 hover:border-[color:var(--brand)] hover:text-[var(--brand)]"
                   >
-                    <Icon fontSize="small" />
+                    <Icon className="h-4 w-4" />
                   </a>
                 );
               })}

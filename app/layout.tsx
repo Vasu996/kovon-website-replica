@@ -1,6 +1,5 @@
 ﻿import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
-import AppThemeProvider from "@/app/theme-provider";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -8,7 +7,7 @@ const manrope = Manrope({
   variable: "--font-body",
   display: "swap",
   preload: true,
-  weight: ["400", "500", "600", "700", "800"]
+  weight: ["400", "600", "700"]
 });
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
   display: "swap",
   preload: true,
-  weight: ["500", "600", "700"]
+  weight: ["600", "700"]
 });
 
 export const metadata: Metadata = {
@@ -62,11 +61,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>): JSX.Element {
+  const themeInitScript = `
+    (function () {
+      try {
+        var saved = localStorage.getItem("kovon-mode");
+        var mode = saved === "dark" || saved === "light"
+          ? saved
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", mode);
+      } catch (e) {}
+    })();
+  `;
+
   return (
-    <html lang="en">
-      <body className={`${manrope.variable} ${spaceGrotesk.variable}`}>
-        <AppThemeProvider>{children}</AppThemeProvider>
-      </body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className={`${manrope.variable} ${spaceGrotesk.variable}`}>{children}</body>
     </html>
   );
 }

@@ -1,4 +1,3 @@
-import { Container, type ContainerProps } from "@mui/material";
 import type { ElementType, ReactNode } from "react";
 
 interface SectionProps {
@@ -6,7 +5,7 @@ interface SectionProps {
   as?: ElementType;
   className?: string;
   containerClassName?: string;
-  maxWidth?: ContainerProps["maxWidth"];
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "full";
   children: ReactNode;
 }
 
@@ -18,14 +17,25 @@ const Section = ({
   maxWidth = "lg",
   children
 }: SectionProps): JSX.Element => {
+  const maxWidthClassName =
+    maxWidth === "sm"
+      ? "max-w-3xl"
+      : maxWidth === "md"
+        ? "max-w-5xl"
+        : maxWidth === "xl"
+          ? "max-w-[88rem]"
+          : maxWidth === "full"
+            ? "max-w-none"
+            : "max-w-7xl";
+
   return (
     <Component
       id={id}
       className={`relative py-[var(--section-pad-mobile)] md:py-[var(--section-pad-tablet)] lg:py-[var(--section-pad-desktop)] ${className}`.trim()}
     >
-      <Container maxWidth={maxWidth} className={containerClassName}>
+      <div className={`mx-auto w-full px-4 sm:px-6 lg:px-8 ${maxWidthClassName} ${containerClassName}`.trim()}>
         {children}
-      </Container>
+      </div>
     </Component>
   );
 };

@@ -1,10 +1,12 @@
-import AccountTree from "@mui/icons-material/AccountTree";
-import Instagram from "@mui/icons-material/Instagram";
-import Language from "@mui/icons-material/Language";
-import LinkedIn from "@mui/icons-material/LinkedIn";
-import QueryStats from "@mui/icons-material/QueryStats";
-import RocketLaunch from "@mui/icons-material/RocketLaunch";
-import Twitter from "@mui/icons-material/Twitter";
+import {
+  ChartIcon,
+  GlobeIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  NetworkIcon,
+  RocketIcon,
+  TwitterIcon
+} from "@/components/ui/Icons";
 import type {
   FeatureItem,
   HeroStatItem,
@@ -54,22 +56,22 @@ export const heroStats: HeroStatItem[] = [
 
 export const features: FeatureItem[] = [
   {
-    icon: Language,
+    icon: GlobeIcon,
     title: "Global Reach",
     description: "Hire high-quality professionals from global markets without setting up local entities."
   },
   {
-    icon: QueryStats,
+    icon: ChartIcon,
     title: "Full Visibility",
     description: "Track hiring pipeline progress and performance with structured updates."
   },
   {
-    icon: RocketLaunch,
+    icon: RocketIcon,
     title: "Rapid Execution",
     description: "Reduce hiring timelines using a repeatable framework designed for speed."
   },
   {
-    icon: AccountTree,
+    icon: NetworkIcon,
     title: "Built To Scale",
     description: "Move from one critical hire to complete international team expansion smoothly."
   }
@@ -106,7 +108,7 @@ export const quickLinks: NavLinkItem[] = [
 ];
 
 export const socialLinks: SocialLinkItem[] = [
-  { name: "LinkedIn", href: "#", icon: LinkedIn },
-  { name: "Twitter", href: "#", icon: Twitter },
-  { name: "Instagram", href: "#", icon: Instagram }
+  { name: "LinkedIn", href: "#", icon: LinkedInIcon },
+  { name: "Twitter", href: "#", icon: TwitterIcon },
+  { name: "Instagram", href: "#", icon: InstagramIcon }
 ];

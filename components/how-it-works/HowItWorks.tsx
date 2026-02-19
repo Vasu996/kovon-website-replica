@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import Section from "@/components/ui/Section";
 import { steps } from "@/constants/content";
 
@@ -7,15 +6,11 @@ const HowItWorks = (): JSX.Element => {
     <Section id="about">
       <div className="pointer-events-none absolute right-10 top-10 h-36 w-36 rounded-full bg-cyan-300/10 blur-3xl" />
       <div className="mb-10 text-center">
-        <Typography className="typo-eyebrow mb-3 text-[var(--brand)]">
-          How It Works
-        </Typography>
-        <Typography component="h2" className="typo-h2 mb-4">
-          A Clear 4-Step Process
-        </Typography>
-        <Typography className="typo-subtitle mx-auto max-w-2xl">
+        <p className="typo-eyebrow mb-3 text-[var(--brand)]">How It Works</p>
+        <h2 className="typo-h2 mb-4">A Clear 4-Step Process</h2>
+        <p className="typo-subtitle mx-auto max-w-2xl">
           Structured delivery from kickoff to onboarding so your team hires confidently and scales without friction.
-        </Typography>
+        </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

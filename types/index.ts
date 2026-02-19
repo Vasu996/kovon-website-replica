@@ -1,4 +1,6 @@
-import type { SvgIconComponent } from "@mui/icons-material";
+import type { ComponentType, SVGProps } from "react";
+
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface NavLinkItem {
   label: string;
@@ -14,7 +16,7 @@ export interface HeroContent {
 }
 
 export interface FeatureItem {
-  icon: SvgIconComponent;
+  icon: IconComponent;
   title: string;
   description: string;
 }
@@ -28,7 +30,7 @@ export interface StepItem {
 export interface SocialLinkItem {
   name: string;
   href: string;
-  icon: SvgIconComponent;
+  icon: IconComponent;
 }
 
 export interface HeroStatItem {

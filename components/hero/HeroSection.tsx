@@ -1,29 +1,13 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
-import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
-import { Stack, Typography } from "@mui/material";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import Section from "@/components/ui/Section";
+import { CheckCircleIcon, GlobeIcon, TrendingUpIcon } from "@/components/ui/Icons";
 import {
   heroContent,
   heroMarqueeItems,
-  heroMotionWords,
   heroStats
 } from "@/constants/content";
 
 const HeroSection = (): JSX.Element => {
-  const [wordIndex, setWordIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % heroMotionWords.length);
-    }, 2200);
-    return () => window.clearInterval(timer);
-  }, []);
-
   return (
     <Section
       id="home"
@@ -35,39 +19,31 @@ const HeroSection = (): JSX.Element => {
 
       <div className="grid items-center gap-10 md:gap-11 lg:grid-cols-[1.08fr_0.92fr]">
         <div className="space-y-6">
-          <Typography className="typo-eyebrow inline-flex rounded-full border border-[var(--line)] bg-[var(--glass-bg)] px-4 py-1.5 text-[var(--brand)]">
+          <p className="typo-eyebrow inline-flex rounded-full border border-[var(--line)] bg-[var(--glass-bg)] px-4 py-1.5 text-[var(--brand)]">
             {heroContent.eyebrow}
-          </Typography>
+          </p>
 
-          <Typography
-            component="h1"
-            className="text-5xl font-extrabold leading-[1.05] tracking-[-0.02em] text-[var(--ink)] md:text-6xl"
-          >
-            {heroContent.title}{" "}
-            <span key={`headline-${heroMotionWords[wordIndex]}`} className="motion-word text-gradient">
-              {heroMotionWords[wordIndex]}
-            </span>
-          </Typography>
+          <h1 className="text-5xl font-extrabold leading-[1.05] tracking-[-0.02em] text-[var(--ink)] md:text-6xl">
+            {heroContent.title} <span className="text-gradient">Precision</span>
+          </h1>
 
-          <Typography className="max-w-xl text-[clamp(0.98rem,1.2vw,1.07rem)] font-medium leading-[1.8] text-[var(--ink-soft)]">
+          <p className="max-w-xl text-[clamp(0.98rem,1.2vw,1.07rem)] font-medium leading-[1.8] text-[var(--ink-soft)]">
             {heroContent.subtitle}
-          </Typography>
+          </p>
 
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--glass-bg)] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink-soft)]">
             Optimized For
-            <span key={heroMotionWords[wordIndex]} className="motion-word font-extrabold text-[var(--brand)]">
-              {heroMotionWords[wordIndex]}
-            </span>
+            <span className="font-extrabold text-[var(--brand)]">Precision</span>
           </div>
 
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={1.75} className="items-start">
+          <div className="flex flex-col items-start gap-2 sm:flex-row sm:gap-3">
             <PrimaryButton size="large" glow>
               {heroContent.primaryCta}
             </PrimaryButton>
             <PrimaryButton tone="ghost" size="large">
               {heroContent.secondaryCta}
             </PrimaryButton>
-          </Stack>
+          </div>
 
           <div className="grid grid-cols-1 gap-3 pt-1 sm:grid-cols-3">
             {heroStats.map((item) => (
@@ -84,10 +60,10 @@ const HeroSection = (): JSX.Element => {
         <div className="glass-panel rounded-[1.8rem] p-5 md:p-7">
           <div className="mb-5 flex items-center justify-between">
             <div className="flex items-center gap-2 text-sm font-bold text-[var(--ink)]">
-              <PublicRoundedIcon fontSize="small" />
+              <GlobeIcon className="h-4 w-4" />
               Global Hiring Command Center
             </div>
-            <TrendingUpRoundedIcon className="text-[var(--brand)]" fontSize="small" />
+            <TrendingUpIcon className="h-4 w-4 text-[var(--brand)]" />
           </div>
 
           <div className="mb-4 grid grid-cols-2 gap-3">
@@ -110,7 +86,7 @@ const HeroSection = (): JSX.Element => {
               <div className="h-full w-4/5 rounded-full bg-[var(--brand)]" />
             </div>
             <div className="flex items-center gap-2 text-sm text-[var(--ink-soft)]">
-              <CheckCircleRoundedIcon className="text-emerald-500" fontSize="small" />
+              <CheckCircleIcon className="h-4 w-4 text-emerald-500" />
               Compliance and onboarding checks automated end-to-end
             </div>
           </div>
