@@ -89,5 +89,3 @@ cd kovon-website-replica
 npm install
 
 npm run dev
-
-i want this as readme without error
