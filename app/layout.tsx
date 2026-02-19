@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
-import "./globals.css";
 import AppThemeProvider from "@/app/theme-provider";
+import "./globals.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -16,8 +16,41 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Kovon Replica",
-  description: "Responsive landing page built with Next.js, TypeScript, MUI, and Tailwind CSS."
+  metadataBase: new URL("https://kovon-website-replica.vercel.app"),
+  title: {
+    default: "Kovon | Global Talent Mobility",
+    template: "%s | Kovon"
+  },
+  description:
+    "Kovon helps teams source, hire, and onboard international talent with speed, visibility, and compliance.",
+  keywords: ["global hiring", "talent mobility", "international recruitment", "remote team scaling"],
+  openGraph: {
+    title: "Kovon | Global Talent Mobility",
+    description:
+      "Scale international hiring with a faster, compliance-ready operating model for modern distributed teams.",
+    url: "https://kovon-website-replica.vercel.app",
+    siteName: "Kovon",
+    images: [
+      {
+        url: "/images/homepage.png",
+        width: 1200,
+        height: 630,
+        alt: "Kovon landing page"
+      }
+    ],
+    locale: "en_US",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kovon | Global Talent Mobility",
+    description:
+      "Scale international hiring with a faster, compliance-ready operating model for modern distributed teams.",
+    images: ["/images/homepage.png"]
+  },
+  alternates: {
+    canonical: "/"
+  }
 };
 
 export default function RootLayout({
@@ -33,3 +66,4 @@ export default function RootLayout({
     </html>
   );
 }
+
